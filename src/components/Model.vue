@@ -37,7 +37,7 @@
           <input
             type="number"
             :name="scales[index]"
-            id="scales[index]"
+            :id="scales[index]"
             class="input"
             v-model.number="editModel.price[index]"
           />
