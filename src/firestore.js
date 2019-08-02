@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "mr-decal-7d5e3",
   storageBucket: "mr-decal-7d5e3.appspot.com",
   messagingSenderId: "343777222161",
-  appId: "1:343777222161:web:aa947eac0f6e2732"
+  appId: "1:343777222161:web:9185f66b7360f89d"
 };
 const app = initializeApp(firebaseConfig);
 const db = app.firestore();
