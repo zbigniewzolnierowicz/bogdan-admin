@@ -55,7 +55,9 @@
       </div>
       <h1 class="title">{{ model.id }} - {{ model.desc }}</h1>
       <p v-for="(price, index) in model.price" :key="index">
-        {{ scales[index] }} - {{ price }}
+        <span v-if="category === 'kolej'">{{ scales.train[index] }}</span>
+        <span v-if="category === 'lotnictwo'">{{ scales.plane[index] }}</span> -
+        {{ price }}
       </p>
     </div>
   </div>
@@ -65,10 +67,13 @@
 import { db } from "../firestore";
 export default {
   name: "Model",
-  props: ["model"],
+  props: ["model", "category"],
   data() {
     return {
-      scales: ["1:144", "1:72", "1:48", "1:32"],
+      scales: {
+        plane: ["1:144", "1:72", "1:48", "1:32"],
+        train: ["TT", "H0", "1:35"]
+      },
       editModel: {},
       editing: false
     };

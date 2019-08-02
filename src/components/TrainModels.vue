@@ -45,7 +45,7 @@
         v-for="model in models$"
         :key="model['.key']"
         :model="model"
-        category="kolej"
+        :category="category"
       />
     </div>
   </div>
@@ -66,7 +66,8 @@ export default {
         id: "MD000",
         price: [0, 0, 0]
       },
-      scales: ["TT", "H0", "1:35"]
+      scales: ["TT", "H0", "1:35"],
+      category: "kolej"
     };
   },
   components: {
@@ -74,11 +75,11 @@ export default {
   },
   methods: {
     upload() {
-      let storageRef = storage.ref(`${this.$data.chosenCategory}`);
+      let storageRef = storage.ref("kolej");
       let image = document.querySelector("#uploadImage").files[0];
       let res = image.name.match(/\.[0-9a-z]+$/i);
       let imageRef = storageRef.child(`${this.$data.newModel.id}${res[0]}`);
-      let databaseRef = db.collection(`${this.$data.chosenCategory}`);
+      let databaseRef = db.collection("kolej");
       let uploadTask = imageRef
         .put(image)
         .then(snapshot => {
@@ -95,7 +96,7 @@ export default {
       this.$data.newModel = {
         desc: "",
         id: "MD000",
-        price: [0, 0, 0, 0]
+        price: [0, 0, 0]
       };
       image = null;
     }

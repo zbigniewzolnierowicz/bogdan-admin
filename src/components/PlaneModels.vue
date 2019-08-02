@@ -45,7 +45,7 @@
         v-for="model in models$"
         :key="model['.key']"
         :model="model"
-        category="lotnictwo"
+        :category="category"
       />
     </div>
   </div>
@@ -66,7 +66,8 @@ export default {
         id: "MD000",
         price: [0, 0, 0, 0]
       },
-      scales: ["1:144", "1:72", "1:48", "1:32"]
+      scales: ["1:144", "1:72", "1:48", "1:32"],
+      category: "lotnictwo"
     };
   },
   components: {
