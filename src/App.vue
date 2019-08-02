@@ -12,6 +12,14 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
+          <div class="select">
+            <select name="category" id="category" v-model="chosenCategory">
+              <option value="kolej">kolej</option>
+              <option value="lotnictwo">lotnictwo</option>
+            </select>
+          </div>
+        </div>
+        <div class="navbar-item">
           <div class="buttons">
             <a class="button is-light" v-on:click="openModal">
               Log in
@@ -21,25 +29,29 @@
       </div>
     </nav>
     <section class="section">
-      <Models />
+      <TrainModels v-if="chosenCategory === 'kolej'" />
+      <PlaneModels v-if="chosenCategory === 'lotnictwo'" />
     </section>
     <Login :class="{ 'is-active': modal }" v-on:closeModal="handleCloseModal" />
   </div>
 </template>
 
 <script>
-import Models from "./components/Models.vue";
+import PlaneModels from "./components/PlaneModels.vue";
+import TrainModels from "./components/TrainModels.vue";
 import Login from "./components/Login.vue";
 
 export default {
   name: "app",
   components: {
-    Models,
+    PlaneModels,
+    TrainModels,
     Login
   },
   data() {
     return {
-      modal: false
+      modal: false,
+      chosenCategory: ""
     };
   },
   methods: {

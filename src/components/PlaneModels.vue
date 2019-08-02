@@ -21,16 +21,6 @@
         <div>
           <input type="file" name="image" id="uploadImage" />
         </div>
-        <div class="select">
-          <select id="category" name="category" v-model="chosenCategory">
-            <option
-              v-for="category in categories"
-              :key="category"
-              :value="category"
-              >{{ category }}
-            </option>
-          </select>
-        </div>
         <div class="wrapper">
           <div
             class="entry"
@@ -76,9 +66,7 @@ export default {
         id: "MD000",
         price: [0, 0, 0, 0]
       },
-      scales: ["1:144", "1:72", "1:48", "1:32"],
-      chosenCategory: "",
-      categories: ["lotnictwo", "kolej"]
+      scales: ["1:144", "1:72", "1:48", "1:32"]
     };
   },
   components: {
