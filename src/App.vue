@@ -9,21 +9,34 @@
         <a class="navbar-item" href="https://bulma.io">
           <img src="./assets/logo.svg" width="90" height="28" />
         </a>
+        <a
+          role="button"
+          :class="{ 'is-active': nav, 'navbar-burger burger': true }"
+          aria-label="menu"
+          aria-expanded="false"
+          v-on:click="handleNavbarBurger"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="select">
-            <select name="category" id="category" v-model="chosenCategory">
-              <option value="kolej">kolej</option>
-              <option value="lotnictwo">lotnictwo</option>
-            </select>
+      <div :class="{ 'is-active': nav, 'navbar-menu': true }">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="select">
+              <select name="category" id="category" v-model="chosenCategory">
+                <option value="kolej">kolej</option>
+                <option value="lotnictwo">lotnictwo</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-light" v-on:click="openModal">
-              Log in
-            </a>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light" v-on:click="openModal">
+                Log in
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -51,7 +64,8 @@ export default {
   data() {
     return {
       modal: false,
-      chosenCategory: ""
+      chosenCategory: "",
+      nav: false
     };
   },
   methods: {
@@ -60,6 +74,9 @@ export default {
     },
     handleCloseModal() {
       this.$data.modal = false;
+    },
+    handleNavbarBurger() {
+      this.$data.nav = !this.$data.nav;
     }
   }
 };
