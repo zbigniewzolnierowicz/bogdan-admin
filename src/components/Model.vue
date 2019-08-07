@@ -88,7 +88,7 @@ export default {
       this.$data.editing = false;
     },
     submit() {
-      db.collection(`${this.$attrs.category}`)
+      db.collection(`${this.$props.category}`)
         .doc(`${this.$props.model[".key"]}`)
         .set(this.$data.editModel)
         .catch(err => console.log(err));
